@@ -7,7 +7,6 @@
     { name: "Federal Way", lat: 47.3223, lng: -122.3126 },
     { name: "Auburn", lat: 47.3073, lng: -122.2285 },
     { name: "Sumner", lat: 47.2032, lng: -122.2404 },
-    { name: "Tacoma", lat: 47.2529, lng: -122.4443 },
     { name: "Puyallup", lat: 47.1854, lng: -122.2929 },
     { name: "Bonney Lake", lat: 47.1771, lng: -122.1868 }
   ];
@@ -62,14 +61,6 @@
         }).addTo(map);
         const tilePane = holder.querySelector(".leaflet-tile-pane");
         if (tilePane) tilePane.style.filter = "grayscale(1) contrast(1.04) brightness(1.02)";
-
-        L.circle([47.318, -122.235], {
-          radius: 26000,
-          color: "#215088",
-          weight: 2,
-          fillColor: "#2E6FB7",
-          fillOpacity: 0.1
-        }).addTo(map);
 
         if (!document.getElementById("sam-keyframes")) {
           const st = document.createElement("style");

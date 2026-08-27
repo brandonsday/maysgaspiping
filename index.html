@@ -60,6 +60,8 @@
   @media (max-width: 900px) { .cols-3 { grid-template-columns: 1fr 1fr !important; } .cols-4 { grid-template-columns: 1fr 1fr !important; } }
   @media (max-width: 620px) { .cols-3, .cols-4 { grid-template-columns: 1fr !important; } }
   @media (max-width: 720px) { .hero-inner { padding: 84px 20px 72px !important; min-height: 560px !important; } }
+  .only-sm { display: none; }
+  @media (max-width: 820px) { .only-sm { display: block !important; } section[data-screen-label]:not([data-screen-label="Hero"]) { padding: 64px 20px !important; } }
   @media (max-width: 820px) { .stack { grid-template-columns: 1fr !important; } .hide-sm { display: none !important; } .logo-full { display: none !important; } .logo-mark { display: block !important; } }
 </style>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#14120F"/><rect x="18" y="40" width="64" height="20" rx="2" fill="#2E6FB7"/><text x="50" y="55" font-family="Archivo, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle">MGP</text></svg></template>
@@ -89,10 +91,10 @@
       <div style="max-width:44rem">
         <div style="display:inline-flex;align-items:center;gap:10px;border:1px solid #4A443D;background:rgba(12,11,9,0.5);padding:7px 14px;border-radius:2px;margin-bottom:28px">
           <span style="width:7px;height:7px;background:#2E6FB7;border-radius:50%;display:block"></span>
-          <span style="font-family:Archivo,sans-serif;font-weight:600;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;color:#CFC8BF">Weekend installs · 20+ years on the gas lines</span>
+          <span style="font-family:Archivo,sans-serif;font-weight:600;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;color:#CFC8BF">Weekend installs · 20+ years of experience</span>
         </div>
         <h1 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(38px,5.2vw,72px);line-height:1.0;letter-spacing:-0.035em;margin:0 0 24px;text-shadow:0 2px 18px rgba(0,0,0,0.5)">A code-compliant gas connection, installed on a Saturday.</h1>
-        <p style="font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:#D6CFC6;max-width:50ch;margin:0 0 36px;text-wrap:pretty">May's Gas Piping helps South King County homeowners get a gas line run for their generator, grill, or fire pit — permit handled, equipment sourced, unit test-fired before we leave. You plug in and use it the same day.</p>
+        <p style="font-size:clamp(17px,1.5vw,21px);line-height:1.5;color:#D6CFC6;max-width:50ch;margin:0 0 36px;text-wrap:pretty">May's Gas Piping helps South King County homeowners get a gas line run for their generator, grill, or fire pit — permit handled, equipment sourced, unit test-fired before we leave.</p>
         <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px">
           <button type="button" onClick="{{ openForm }}" style="background:#2E6FB7;color:#FFFFFF;font-family:Archivo,sans-serif;font-weight:800;font-size:18px;padding:19px 32px;border:none;border-radius:2px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.35)" style-hover="background:#215088">Get a flat-rate quote</button>
           <a href="tel:+12537377114" style="display:inline-block;border:1px solid #6B635A;background:rgba(12,11,9,0.45);color:#F7F5F2;font-family:Archivo,sans-serif;font-weight:700;font-size:18px;padding:19px 32px;border-radius:2px" style-hover="border-color:#F7F5F2">Call (253) 737-7114</a>
@@ -143,7 +145,7 @@
   <section data-screen-label="Services" style="background:#14120F;color:#F7F5F2;padding:104px 28px">
     <div style="max-width:1180px;margin:0 auto">
       <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;color:#2E6FB7;margin-bottom:16px">What we connect</div>
-      <h2 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,44px);line-height:1.08;letter-spacing:-0.025em;margin:0 0 48px">Three jobs. One specialist.</h2>
+      <h2 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,44px);line-height:1.08;letter-spacing:-0.025em;margin:0 0 48px">One specialist for anything that runs on gas.</h2>
       <div class="cols-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
         <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
           <div style="border:1px solid #332E29;background:#1A1714;padding:34px;display:flex;flex-direction:column;gap:16px">
@@ -169,7 +171,8 @@
               <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:10px">
                 <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em;margin:0">{{ item.title }}</h3>
               </div>
-              <p style="font-size:17px;line-height:1.6;color:#4A443D;margin:0">{{ item.body }}</p>
+              <p class="hide-sm" style="font-size:17px;line-height:1.6;color:#4A443D;margin:0">{{ item.body }}</p>
+              <p class="only-sm" style="font-size:17px;line-height:1.6;color:#4A443D;margin:0">{{ item.short }}</p>
             </div>
           </div>
         </sc-for>
@@ -192,7 +195,8 @@
           <div style="border-top:3px solid #14120F;padding-top:24px">
             <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;color:#215088;margin-bottom:12px">{{ b.when }}</div>
             <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.02em;line-height:1.2;margin:0 0 14px">{{ b.title }}</h3>
-            <p style="font-size:17px;line-height:1.6;color:#4A443D;margin:0">{{ b.body }}</p>
+            <p class="hide-sm" style="font-size:17px;line-height:1.6;color:#4A443D;margin:0">{{ b.body }}</p>
+            <p class="only-sm" style="font-size:17px;line-height:1.6;color:#4A443D;margin:0">{{ b.short }}</p>
           </div>
         </sc-for>
       </div>
@@ -209,7 +213,8 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline data-anim="check" points="4.5 12.8 9.5 17.8 19.5 6.5"></polyline></svg>
             </span>
             <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:23px;letter-spacing:-0.02em;line-height:1.25;margin:0;align-self:center">{{ g.title }}</h3>
-            <p style="grid-column:2;font-size:17px;line-height:1.6;color:#B0A89E;margin:0">{{ g.body }}</p>
+            <p class="hide-sm" style="grid-column:2;font-size:17px;line-height:1.6;color:#B0A89E;margin:0">{{ g.body }}</p>
+            <p class="only-sm" style="grid-column:2;font-size:17px;line-height:1.6;color:#B0A89E;margin:0">{{ g.short }}</p>
           </div>
         </sc-for>
       </div>
@@ -230,7 +235,8 @@
               <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;color:#8E877E;margin-bottom:8px">{{ o.label }}</div>
               <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.02em;line-height:1.2;margin:0;color:{{ o.titleColor }}">{{ o.title }}</h3>
             </div>
-            <p style="font-size:18px;line-height:1.6;color:#4A443D;margin:0">{{ o.body }}</p>
+            <div><p class="hide-sm" style="font-size:18px;line-height:1.6;color:#4A443D;margin:0">{{ o.body }}</p>
+            <p class="only-sm" style="font-size:18px;line-height:1.6;color:#4A443D;margin:0">{{ o.short }}</p></div>
           </div>
         </sc-for>
       </div>
@@ -241,14 +247,14 @@
     <div style="max-width:1180px;margin:0 auto">
       <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;color:#215088;margin-bottom:16px">Where we work</div>
       <h2 style="font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,44px);line-height:1.08;letter-spacing:-0.025em;margin:0 0 20px">South King County and Pierce County</h2>
-      <p style="font-size:19px;line-height:1.6;color:#5D564E;max-width:60ch;margin:0 0 44px;text-wrap:pretty">If you are inside this radius, we come to you. Just outside it? Call and ask — we make exceptions for the right job.</p>
+      <p style="font-size:19px;line-height:1.6;color:#5D564E;max-width:60ch;margin:0 0 44px;text-wrap:pretty">These are the cities we work in.</p>
       <div class="stack stack-wide" style="display:grid;grid-template-columns:1.25fr 0.75fr;gap:40px;align-items:start">
         <div style="border:1px solid #E3DED7;position:relative;z-index:0;isolation:isolate">
           <x-import component-from-global-scope="service-area-map" from="./service-map.js" height="480px" hint-size="100%,480px"></x-import>
         </div>
         <div>
           <ul style="list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 20px">
-            <sc-for list="{{ cities }}" as="c" hint-placeholder-count="10">
+            <sc-for list="{{ cities }}" as="c" hint-placeholder-count="9">
               <li style="display:flex;align-items:center;gap:10px;font-size:17px;color:#3A342D">
                 <svg width="14" height="18" viewBox="0 0 14 18" fill="none" aria-hidden="true" style="flex:none"><path d="M7 1C3.7 1 1 3.7 1 7c0 4.5 6 10 6 10s6-5.5 6-10c0-3.3-2.7-6-6-6z" fill="#215088"></path><circle cx="7" cy="7" r="2.2" fill="#FFFFFF"></circle></svg>
                 {{ c }}
@@ -324,7 +330,7 @@
               <select name="project" style="border:1px solid #D6D0C8;padding:13px 14px;font-size:16px;border-radius:2px;background:#FBFAF8">
                 <option>Generator hookup</option>
                 <option>Gas grill line</option>
-                <option>Fire pit line</option>
+                <option>Fire pit or other project</option>
                 <option>Something else / not sure</option>
               </select>
             </label>
@@ -422,7 +428,7 @@ class Component extends DCLogic {
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Gas piping services",
-        itemListElement: ["Generator gas hookups", "Gas grill line installation", "Gas fire pit line installation"].map((n) => ({
+        itemListElement: ["Generator gas hookups", "Gas grill line installation", "Gas fire pit and outdoor appliance lines"].map((n) => ({
           "@type": "Offer", itemOffered: { "@type": "Service", name: n }
         }))
       }
@@ -488,7 +494,7 @@ class Component extends DCLogic {
   renderVals() {
     return {
       licenseNumber: this.props.licenseNumber ?? "MAYSGGP786C2",
-      cities: ["Renton", "Kent", "Maple Valley", "Covington", "Federal Way", "Auburn", "Sumner", "Tacoma", "Puyallup", "Bonney Lake"],
+      cities: ["Renton", "Kent", "Maple Valley", "Covington", "Federal Way", "Auburn", "Sumner", "Puyallup", "Bonney Lake"],
       open: this.state.open,
       sent: this.state.sent,
       showForm: !this.state.sent && !this.state.sending,
@@ -533,32 +539,32 @@ class Component extends DCLogic {
       services: [
         { title: "Generator hookups", src: "./assets/generator-hookup.png", alt: "Portable generator connected to a permanent gas line at the side of a house", body: "A permanent gas connection for your portable or standby unit, sized to the load. No extension cord through the window, no fuel runs during an outage." },
         { title: "Gas grills", src: "./assets/gas-grill.png", alt: "Built-in patio grill with a gas line and shutoff valve at the wall", body: "A line run to your patio so the grill is always ready. No swapping propane tanks in the middle of a party, ever again." },
-        { title: "Fire pits", src: "./assets/fire-pit.png", alt: "Stone gas fire pit lit on a paver patio at dusk", body: "Clean, permanent gas to the fire pit. We size it, run it, connect it, and light it with you before we leave." }
+        { title: "Other projects", src: "./assets/fire-pit.png", alt: "Stone gas fire pit lit on a paver patio at dusk", body: "Fire pits, patio heaters, pool heaters, outdoor kitchens, shop heat. If it runs on gas, we can run a line to it. Tell us what you have in mind." }
       ],
       stack: [
-        { n: "01", title: "One point of contact", value: "$150", body: "From the moment you reach out, you have one person who knows your project. No repeating yourself to a different person each time you call. No chasing down a scheduler. We handle everything in between so that when the install day comes, everything is already figured out." },
-        { n: "02", title: "Done-for-you sizing and assessment", value: "$150", body: "We evaluate your home's current gas load and meter capacity to confirm you have the right volume for what you are adding. If your meter needs an upgrade, we coordinate with PSE directly. You never have to call the utility yourself." },
-        { n: "03", title: "Equipment guidance and sourcing", value: "$200", body: "We tell you exactly what to buy, or source it for you. No guessing at generator wattage, grill BTUs, or fire pit sizing. You get a specific recommendation based on your actual usage, not a box store upsell." },
-        { n: "04", title: "Permitted, code-compliant installation", value: "$1,500", body: "A pressure-tested gas line run to your exact specification. Every permit handled. Every inspection passed. You never make a single call to the county." },
-        { n: "05", title: "Pre-assembly and delivery", value: "$300", body: "If you purchase equipment through us, it arrives pre-assembled and ready to connect. You do not receive a pallet and an instruction manual. You receive a working unit." },
-        { n: "06", title: "The walkthrough and test fire", value: "$100", body: "We do not leave until the unit is connected, fired up, and you know exactly how to operate it. You use it the same day." }
+        { n: "01", title: "One point of contact", value: "$150", short: "One person who knows your project, start to finish.", body: "From the moment you reach out, you have one person who knows your project. No repeating yourself to a different person each time you call. No chasing down a scheduler. We handle everything in between so that when the install day comes, everything is already figured out." },
+        { n: "02", title: "Done-for-you sizing and assessment", value: "$150", short: "We check your meter and gas load, and coordinate with PSE if it needs an upgrade.", body: "We evaluate your home's current gas load and meter capacity to confirm you have the right volume for what you are adding. If your meter needs an upgrade, we coordinate with PSE directly. You never have to call the utility yourself." },
+        { n: "03", title: "Equipment guidance and sourcing", value: "$200", short: "We tell you exactly what to buy, or source it for you.", body: "We tell you exactly what to buy, or source it for you. No guessing at generator wattage, grill BTUs, or fire pit sizing. You get a specific recommendation based on your actual usage, not a box store upsell." },
+        { n: "04", title: "Permitted, code-compliant installation", value: "$1,500", short: "A pressure-tested line, with every permit and inspection handled.", body: "A pressure-tested gas line run to your exact specification. Every permit handled. Every inspection passed. You never make a single call to the county." },
+        { n: "05", title: "Pre-assembly and delivery", value: "$300", short: "Equipment bought through us arrives assembled and ready to connect.", body: "If you purchase equipment through us, it arrives pre-assembled and ready to connect. You do not receive a pallet and an instruction manual. You receive a working unit." },
+        { n: "06", title: "The walkthrough and test fire", value: "$100", short: "We do not leave until it is connected, fired up, and you know how to run it.", body: "We do not leave until the unit is connected, fired up, and you know exactly how to operate it." }
       ],
       bonuses: [
-        { when: "Before the job", title: "The \u201cWhat Do I Actually Need?\u201d Consultation", value: "$100", body: "Before we quote anything, we get on a quick call and figure out exactly what you need. What size, what type, what your meter can support. Most people spend weeks Googling and still do not know. We answer it in one conversation." },
-        { when: "During the job", title: "Direct Utility Coordination", value: "Priceless", body: "If your job requires a PSE meter upgrade or utility approval, we handle that communication on your behalf. You never have to navigate the utility's process yourself." },
-        { when: "After the job", title: "The Annual Check-In", value: "$75", body: "Every year before storm season, we send you a reminder to test your system and a quick checklist of what to verify. One text, two minutes, and you know your setup is still good." }
+        { when: "Before the job", title: "The \u201cWhat Do I Actually Need?\u201d Consultation", value: "$100", short: "One call to settle what size, what type, and what your meter can support.", body: "Before we quote anything, we get on a quick call and figure out exactly what you need. What size, what type, what your meter can support. Most people spend weeks Googling and still do not know. We answer it in one conversation." },
+        { when: "During the job", title: "Direct Utility Coordination", value: "Priceless", short: "If PSE approval or a meter upgrade is needed, we handle it for you.", body: "If your job requires a PSE meter upgrade or utility approval, we handle that communication on your behalf. You never have to navigate the utility's process yourself." },
+        { when: "After the job", title: "The Annual Check-In", value: "$75", short: "A reminder and a short checklist before storm season, every year.", body: "Every year before storm season, we send you a reminder to test your system and a quick checklist of what to verify. One text, two minutes, and you know your setup is still good." }
       ],
       guarantees: [
-        { title: "The Pass-Inspection Guarantee", body: "If our installation does not pass inspection the first time, we fix whatever is flagged and cover the re-inspection fee. No extra charge, no argument." },
-        { title: "The It-Works Guarantee", body: "When we finish the job, we test the line and fire up the unit together before we leave. If it does not work, we do not leave until it does." },
-        { title: "The No-Surprise Price Guarantee", body: "The price we quote before the job is the price you pay. If we discover something unexpected mid-job that changes the scope, we stop, tell you what we found, and get your approval before doing anything additional. You are never handed a bill larger than what you agreed to." },
-        { title: "The 90-Day Workmanship Guarantee", body: "If anything we installed develops a leak or a fitting failure within 90 days of the install, we come back and fix it at no charge." }
+        { title: "The Pass-Inspection Guarantee", short: "If it does not pass the first time, we fix it and cover the re-inspection fee.", body: "If our installation does not pass inspection the first time, we fix whatever is flagged and cover the re-inspection fee. No extra charge, no argument." },
+        { title: "The It-Works Guarantee", short: "We fire up the unit with you before we leave. If it does not work, we stay.", body: "When we finish the job, we test the line and fire up the unit together before we leave. If it does not work, we do not leave until it does." },
+        { title: "The No-Surprise Price Guarantee", short: "The quoted price is the price you pay. Any scope change gets your approval first.", body: "The price we quote before the job is the price you pay. If we discover something unexpected mid-job that changes the scope, we stop, tell you what we found, and get your approval before doing anything additional. You are never handed a bill larger than what you agreed to." },
+        { title: "The 90-Day Workmanship Guarantee", short: "Any leak or fitting failure within 90 days, we come back and fix it free.", body: "If anything we installed develops a leak or a fitting failure within 90 days of the install, we come back and fix it at no charge." }
       ],
       options: [
-        { label: "Option 1", title: "Do nothing", titleColor: "#14120F", body: "Run an extension cord through the window during the next outage. Swap propane tanks before every party. The problem does not go away, it just keeps costing you in hassle and small indignities." },
-        { label: "Option 2", title: "Hire a generalist plumber", titleColor: "#14120F", body: "Minimum service fee of $400 to $600 before they touch anything. Booked out three weeks. You take a day off work for the appointment. And gas piping is not their specialty, it is a side job they fit in between real plumbing calls." },
-        { label: "Option 3", title: "A whole-home standby generator system", titleColor: "#14120F", body: "Roughly $15,000 to $18,000 installed. Automatic, permanent, and genuinely impressive. Also more than most homeowners need or want to spend." },
-        { label: "Option 4", title: "May's Gas Piping", titleColor: "#215088", body: "A flat-rate, quoted-upfront gas connection installed on a weekend by a specialist with 20+ years on the gas lines. You plug in and use it the same day." }
+        { label: "Option 1", title: "Do nothing", titleColor: "#14120F", short: "Extension cords and propane swaps. The hassle keeps costing you.", body: "Run an extension cord through the window during the next outage. Swap propane tanks before every party. The problem does not go away, it just keeps costing you in hassle and small indignities." },
+        { label: "Option 2", title: "Hire a generalist plumber", titleColor: "#14120F", short: "$400 to $600 minimum, booked out three weeks, and gas piping is a side job for them.", body: "Minimum service fee of $400 to $600 before they touch anything. Booked out three weeks. You take a day off work for the appointment. And gas piping is not their specialty, it is a side job they fit in between real plumbing calls." },
+        { label: "Option 3", title: "A whole-home standby generator system", titleColor: "#14120F", short: "$15,000 to $18,000 installed. More than most homeowners need.", body: "Roughly $15,000 to $18,000 installed. Automatic, permanent, and genuinely impressive. Also more than most homeowners need or want to spend." },
+        { label: "Option 4", title: "May's Gas Piping", titleColor: "#215088", short: "Flat-rate and quoted upfront. We source the parts, then install on a weekend that works for you.", body: "A flat-rate, quoted-upfront gas connection installed on a weekend by a specialist with 20+ years of experience. We quote it, source the parts, and come back to install." }
       ]
     };
   }
