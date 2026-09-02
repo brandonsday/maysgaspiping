@@ -8,7 +8,8 @@
     { name: "Auburn", lat: 47.3073, lng: -122.2285 },
     { name: "Sumner", lat: 47.2032, lng: -122.2404 },
     { name: "Puyallup", lat: 47.1854, lng: -122.2929 },
-    { name: "Bonney Lake", lat: 47.1771, lng: -122.1868 }
+    { name: "Bonney Lake", lat: 47.1771, lng: -122.1868 },
+    { name: "Enumclaw", lat: 47.2043, lng: -121.9915 }
   ];
 
   let leafletPromise = null;
