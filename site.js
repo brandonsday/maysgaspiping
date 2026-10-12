@@ -1,6 +1,6 @@
 (() => {
   // Paste your GA4 Measurement ID (G-XXXXXXXXXX) between the quotes to turn on analytics.
-  const GA_ID = "";
+  const GA_ID = "G-RS3MH2B6MT";
   const SHEETS_URL = "https://script.google.com/macros/s/AKfycbybkWP4CQfqUYMfJdirZJACs93B3T7jPd0uFweq-yRl1nOZhZwAuSVg3HWsod_lezXL/exec";
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
