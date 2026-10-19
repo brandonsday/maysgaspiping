@@ -6,6 +6,14 @@
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const track = (name, params) => { if (typeof window.gtag === "function") window.gtag("event", name, params || {}); };
 
+  // Respect reduced motion and retain the exact first video frame as fallback.
+  const heroVideo = document.querySelector('[data-el="hero-video"]');
+  if (heroVideo && reduced) {
+    heroVideo.removeAttribute("autoplay");
+    heroVideo.pause();
+    heroVideo.style.display = "none";
+  }
+
   if (GA_ID) {
     const s = document.createElement("script");
     s.async = true;
